@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			$.ajax({  
+			    //async: false,//设置为同步，默认为异步（一般不需要）  
+			    url : "https://restapi.amap.com/v3/weather/weatherInfo",  
+			    type : "get",  
+			    //type : "post",  
+			    //dataType : "json",  
+			    data : {  
+			        "key" : "891a9841ae6d7d29a58c02f45861a3b9",  
+			        "city" : "110000"  
+			    },  
+			    complete : function(XMLHttpRequest, textStatus){  
+			        //alert("textStatus="+textStatus);  
+			        //closeLoading();//关闭进度条  
+			    },  
+			    error : function(XMLHttpRequest, textStatus, errorThrown){  
+			        //closeLoading();//关闭进度条  
+			        if("error" == textStatus){  
+			            //$.messager.alert("系统提示", "服务器未响应，请稍候再试", "info");  
+			        }else{  
+			            //$.messager.alert("系统提示", "请求失败，textStatus="+textStatus, "info");  
+			        }  
+			     },  
+			     success : function(data){  
+					 document.write(JSON.stringify(data));
+			         console.log(data);
+			     }  
+			});  
+		</script>
+	</body>
+</html>
